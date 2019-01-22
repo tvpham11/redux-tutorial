@@ -8,10 +8,10 @@ export const userReducer = (state = initial, action) => {
     case 'ADD_USER':
       return {
         names: [
-          ...state.names, action.name
+          ...state.names, 
+          action.name
           // {
           //   user: action.name,
-          //   id: action.id,
           //   contacted: false
           // }
         ]

@@ -1,7 +1,6 @@
-
-export const toggleUser = (name) => {
+export const toggleUser = id => {
     return {
         type: 'TOGGLE_USER',
-        id: name.id
+        id
     }
 }

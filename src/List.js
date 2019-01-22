@@ -1,29 +1,29 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-// import { store } from './App.js'
-// import { toggleUser } from './models/actions/toggle-user';
 import './App.css';
+
+import { toggleUser } from './models/actions/toggle-user';
 
 class List extends Component {
 
-  // constructor() {
-  //   super();
-  //   this.state = { 
-  //     id: ''
-  //   }
-  // }
+  constructor() {
+    super();
+    this.state = { 
+      contacted: false
+    }
+  }
 
-  // clickedUser(event, userId) {
-  //   event.preventDefault();
-  //   const { toggleUser } = this.props;
-  //   toggleUser(userId);
-  //   this.setState({
-  //     id: ''
-  //   });
-  //   event.style = {
-  //     textDecoration: userId.contacted ? 'line-through' : 'none'
-  //   }
-  // }
+  clickedUser(event, userName) {
+    event.preventDefault();
+    const { toggleUser } = this.props;
+    toggleUser(userName);
+    this.setState({
+      contacted: true
+    });
+    // event.style = {
+    //   textDecoration: userName.contacted ? 'line-through' : 'none'
+    // }
+  }
 
   // userList() {
   //   const { users } = this.props;
@@ -35,10 +35,13 @@ class List extends Component {
   //   )
   // }
 
+  // when change userReducer function in user-reducer to take state = [] (instead of state = initial),
+  // users.names.map doesn't work - need to figure out how to change state to be an array of objects,
+  // instead of array of strings to save contacted state of each name
   userList() {
     const { users } = this.props;
     return users.names.map((name, i) => 
-      <li key={i}>{name}</li>
+      <li key={i} onClick={(event) => this.clickedUser(event, users.key)}>{name}</li>
     )
   }
 
@@ -61,5 +64,9 @@ const mapStateToProps = (state) => {
   }
 }
 
-export default connect(mapStateToProps)(List);
+const mapDispatchToProps = {
+  toggleUser
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(List);
 // export default List;
