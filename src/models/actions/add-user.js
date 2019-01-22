@@ -1,7 +1,7 @@
 
 export const addUser = (name) => {
   return {
-    name,
-    type: 'ADD_USER'
+    type: 'ADD_USER',
+    name
   }
 }
