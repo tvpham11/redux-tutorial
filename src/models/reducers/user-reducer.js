@@ -3,7 +3,7 @@ const initial = {
 }
 
 
-export const userReducer = (state=initial, action) => {
+export const userReducer = (state = initial, action) => {
   switch (action.type) {
     case 'ADD_USER':
       return {
