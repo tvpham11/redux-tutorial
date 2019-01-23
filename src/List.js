@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 
-import { UserList } from './components/UserList';
+import User from './components/user';
 import { toggleUser } from './models/actions/toggle-user';
 
 class List extends Component {
@@ -14,17 +14,19 @@ class List extends Component {
     }
   }
 
-  clickedUser(event, userName) {
-    event.preventDefault();
-    const { toggleUser } = this.props;
-    toggleUser(userName);
-    this.setState({
-      contacted: true
-    });
-    // event.style = {
-    //   textDecoration: userName.contacted ? 'line-through' : 'none'
-    // }
-  }
+  // clickedUser(event, index) {
+  //   console.log('Event: ' + event + ' and index: ' + index);
+  //   event.preventDefault();
+  //   const { toggleUser } = this.props;
+  //   console.log('props: ' + toggleUser);
+  //   toggleUser(index);
+  //   this.setState({
+  //     contacted: true
+  //   });
+  //   event.style = {
+  //     textDecoration: event.contacted ? 'line-through' : 'none'
+  //   }
+  // }
 
   // userList() {
   //   const { users } = this.props;
@@ -49,9 +51,29 @@ class List extends Component {
   userList() {
     const { users } = this.props;
     return users.names.map((name, i) => 
-      <li key={i}>{name}</li>
+      <li key={i} onClick={() => toggleUser(i)}>{ name }</li>
+      /* onClick={this.clickedUser.bind(this, i)}> */
     )
   }
+
+  // user = ({ onClick, contacted, name }) => (
+  //   <li
+  //     onClick={onClick}
+  //     style={{
+  //       textDecoration: contacted ? 'line-through' : 'none'
+  //     }}
+  //   >
+  //     { name }
+  //   </li>
+  // )
+
+  // userList = ({ users, toggleUser }) => (
+  //   <ul>
+  //     {users.map(user => (
+  //       <User key={user.id} {...user} onClick={() => toggleUser(user.id)} />
+  //     ))}
+  //   </ul>
+  // )
 
   render() {
     return (

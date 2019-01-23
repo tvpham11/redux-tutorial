@@ -1,7 +1,7 @@
 
-export const addUser = name => {
+export const addUser = user => {
   return {
     type: 'ADD_USER',
-    name
+    user
   }
 }

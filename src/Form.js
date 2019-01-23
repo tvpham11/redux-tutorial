@@ -9,28 +9,33 @@ class Form extends Component {
   constructor() {
     super();
     this.state = { 
-      userName: ''
+      name: '',
+      id: '',
+      contacted: false
     }
   }
 
-  pushNewUser(event, userName) {
+  pushNewUser(event, user) {
     event.preventDefault();
     const { addUser } = this.props;
-    addUser(userName);
+    // const newUser = { name: userName, contacted: false, id: }
+    addUser(user);
     this.setState({
-      userName: ''
+      name: '',
+      id: '',
+      contacted: false
     });
   }
 
   render() {
-    const { userName } = this.state;
+    const { user } = this.state;
     return (
       <div>
         <p>Add a new user!</p>
-        <form onSubmit={(event) => this.pushNewUser(event, userName)}>
+        <form onSubmit={(event) => this.pushNewUser(event, user)}>
           <input onChange = {event =>
-          this.setState({ userName: event.target.value })} 
-          type="text" value={userName}/>
+          this.setState({ user: event.target.value })} 
+          type="text" value={user}/>
           <button>Add User</button>
         </form>
       </div>
