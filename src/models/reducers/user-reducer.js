@@ -15,20 +15,21 @@ export const userReducer = (state = initial, action) => {
       }
 
     case 'TOGGLE_USER':
-      return state.list.map(user => {
-        if (user.id !== action.id) {
-          return user;
-        }
-        return {
-          ...state.list,
-          contacted: action.contacted
-        }
-      }
+      // return state.list.map(user => {
+      //   console.log('list: ' + state.list + ' user id: ' + user.id + ' action.id: ' + action.id);
+      //   if (user.id !== action.id) {
+      //     return user;
+      //   }
+      //   return {
+      //     ...state,
+      //     contacted: action.contacted
+      //   }
+      // }
 
 
-        // return state.list.map(
-        //   user =>
-        //     user.id === action.id ? { ...user, completed: !user.completed } : user
+        return state.list.map(
+          user =>
+            user.id === action.id ? { ...user, contacted: !user.contacted } : user
       )
 
     default:

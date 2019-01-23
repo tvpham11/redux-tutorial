@@ -9,7 +9,7 @@ class List extends Component {
 
   clickedUser(event, user) {
     event.preventDefault();
-    const { toggleUser, users } = this.props;
+    const { toggleUser } = this.props;
     console.log('clicked ID: ' + user.id);
     toggleUser(user.id);
     event.style = {
