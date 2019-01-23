@@ -1,5 +1,5 @@
 const initial = {
-  users: []
+  list: []
 }
 
 //when I change the names array to contain objects instead of strings, app does not re-render
@@ -9,27 +9,29 @@ export const userReducer = (state = initial, action) => {
   switch (action.type) {
     case 'ADD_USER':
       return {
-        users: [
-          // removing action.name causes names not to populate as list items and names aren't
-          // added to array
-          ...state.names,
-          // action.name
-          {
-            user: action.name,
-            id: action,id,
-            contacted: false
-          }
+        list: [
+          ...state.list, action.user
         ]
       }
-      case 'TOGGLE_USER':
-        if (state.id !== action.id) {
-          return state;
+
+    case 'TOGGLE_USER':
+      return state.list.map(user => {
+        if (user.id !== action.id) {
+          return user;
         }
         return {
-          ...state,
-          contacted: state.contacted
-        };
-    default: 
+          ...state.list,
+          contacted: action.contacted
+        }
+      }
+
+
+        // return state.list.map(
+        //   user =>
+        //     user.id === action.id ? { ...user, completed: !user.completed } : user
+      )
+
+    default:
       return state
   }
 }
