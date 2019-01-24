@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import './App.css';
 
-// import User from './components/User';
 import { toggleUser } from './models/actions/toggle-user';
 
 class List extends Component {
@@ -17,46 +16,13 @@ class List extends Component {
     }
   }
 
-  // userList() {
-  //   const { users } = this.props;
-  //   const { userId } = this.state;
-  //   return users.names.map((name) => 
-  //     <li key={name.id}
-  //       onClick={(event) => this.clickedUser(event, userId)}>
-  //     {name}</li>
-  //   )
-  // }
-
-
-
   userList() {
     const { users } = this.props;
-    // return Object.keys(users).map((user, i) =>
     console.log(users);
     return users.list.map((user) => 
       <li key={user.id} onClick={(event)=> this.clickedUser(event, user)}>{ user.name }</li>
-      /* onClick={this.clickedUser.bind(this, i)}> */
     )
   }
-
-  // user = ({ onClick, contacted, name }) => (
-  //   <li
-  //     onClick={onClick}
-  //     style={{
-  //       textDecoration: contacted ? 'line-through' : 'none'
-  //     }}
-  //   >
-  //     { name }
-  //   </li>
-  // )
-
-  // userList = ({ users, toggleUser }) => (
-  //   <ul>
-  //     {users.map(user => (
-  //       <User key={user.id} {...user} onClick={() => toggleUser(user.id)} />
-  //     ))}
-  //   </ul>
-  // )
 
   render() {
     return (
