@@ -33,3 +33,7 @@ button {
     transform: rotate(360deg);
   }
 }
+
+li {
+  text-align: justify
+}
