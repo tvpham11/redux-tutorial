@@ -17,7 +17,7 @@ export const userReducer = (state = initial, action) => {
       user =>
         user.id === action.id ? { ...user, contacted: !user.contacted } : user
     )
-    console.log(state);
+
       return {
         list : [
           ...state.list
